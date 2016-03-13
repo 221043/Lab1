@@ -54,6 +54,10 @@ public class AlienController {
     		else{
     			int i = testo.lastIndexOf(" ");
             	if(i!=-1){
+            		if(testo.lastIndexOf('?')>-1){
+            			txtResult.setText("Errore richiesta");
+            			return;
+            		}
             		String alienWord = testo.substring(0, i);
             		String translation = testo.substring(i+1);
             		d.addWord(alienWord, translation);

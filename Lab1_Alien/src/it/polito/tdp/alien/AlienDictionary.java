@@ -30,8 +30,18 @@ public class AlienDictionary {
 	}
 	
 	public String translateWord(String alienWord){
+		String r="";
 		if(search(alienWord)!=null)
-			return search(alienWord).getTranslations();
+				return search(alienWord).getTranslations();
+		else if(alienWord.lastIndexOf('?')>-1){
+				for(char c='a'; c<='z'; c++){
+					String nuovaParola = alienWord.replace('?', c);
+					String result = translateWord(nuovaParola);
+					if(result!=null)
+						r += result;
+				}
+				return r;
+			}			
 		return null;
 	}
 	
